@@ -1,0 +1,11 @@
+notifications:
+  - provider: Email
+    # Список адресов
+    to:
+      - ulliceaway2000@mail.ru
+    # Отправлять ли письмо в случае успеха?
+    on_build_success: true
+    # Отправлять ли письмо в случае провала?
+    on_build_failure: true
+    # Отправлять ли письмо когда статус изменился?
+    on_build_status_changed: true
