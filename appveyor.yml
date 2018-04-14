@@ -1,11 +1,34 @@
+# Test against this version of Node.js
+environment:
+  matrix:
+    # node.js
+    - nodejs_version: "6"
+
+# Install scripts. (run after repo cloninig)
+install:
+  # Get the latest stable version of Node.js or io.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - npm install
+  
+# Post-install test scripts
+test_scripts:
+  # Output useful info debugging
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
+
+# Don't actually build.
+build: off  
 notifications:
   - provider: Email
     # Список адресов
     to:
       - ulliceaway2000@mail.ru
     # Отправлять ли письмо в случае успеха?
-    on_build_success: true
+    on_build_success: false
     # Отправлять ли письмо в случае провала?
-    on_build_failure: true
+    on_build_failure: false
     # Отправлять ли письмо когда статус изменился?
-    on_build_status_changed: true
+    on_build_status_changed: false
